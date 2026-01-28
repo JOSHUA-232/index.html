@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¿Quieres ser mi San Valentín?</title>
+
+  <script>
+    function accept() {
+      document.getElementById('message').style.display = 'block';
+      createHearts();
+    }
+
+    function moveNo() {
+      const btn = document.querySelector('.no');
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function playSong() {
+      const spotifyLink = 'https://open.spotify.com/track/0K6yUnIKNsFtfIpTgGtcHm';
+      window.location.href = spotifyLink;
+    }
+
+    function createHearts() {
+      const card = document.querySelector('.card');
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '💖';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        card.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      background: linear-gradient(135deg, #f6c1cc, #f3a8b5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .card {
+      background: #fff5f7;
+      padding: 2.2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 420px;
+      width: 90%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 { color: #b23a48; }
+
+    p {
+      color: #5a2a2a;
+      font-size: 1.15rem;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .yes { background: #b23a48; color: white; }
+    .no { background: #e0c3c7; }
+    .music { background: #f1a7b3; }
+
+    .message {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      color: #b23a48;
+      display: none;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -10px;
+      font-size: 20px;
+      animation: float 4s linear forwards;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-500px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>💖 ¿Quieres ser mi San Valentín? 💖</h1>
+    <p>Mi Chelsea hermosa 💖✨<br>
+    Desde que llegaste, todo tiene más luz. Cada sonrisa tuya es un regalo y cada momento juntos es especial. Hoy solo quiero preguntarte algo con el corazón… 💘</p>
+
+    <div class="buttons">
+      <button class="yes" onclick="accept()">Sí 💕</button>
+      <button class="no" onmouseover="moveNo()">No 🙈</button>
+      <button class="music" onclick="playSong()">🎶 Escuchar canción</button>
+    </div>
+
+    <div class="message" id="message">
+      ¡Gracias por decir que sí, mi Chelsea hermosa! 💘🥰<br>
+      Prometo cuidarte, hacerte reír y regalarte momentos que se queden para siempre 🌹✨
+    </div>
+  </div>
+</body>
+</html>
+
